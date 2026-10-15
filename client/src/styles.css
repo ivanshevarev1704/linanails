@@ -274,7 +274,7 @@ h1, h2, h3, h4 {
   display: none;
   position: fixed; top: 0; right: 0;
   width: min(85vw, 360px); height: 100vh;
-  background: #fff; z-index: 40;
+  background: #fff; z-index: 60;
   padding: 100px 28px 32px;
   box-shadow: -12px 0 40px rgba(45, 27, 46, 0.18);
   transform: translateX(100%);
@@ -301,7 +301,7 @@ h1, h2, h3, h4 {
 .mobile-menu__backdrop {
   display: none; position: fixed; inset: 0;
   background: rgba(45, 27, 46, 0.5);
-  backdrop-filter: blur(4px); z-index: 30;
+  backdrop-filter: blur(4px); z-index: 55;
   opacity: 0; pointer-events: none; transition: opacity .35s ease;
 }
 .mobile-menu__backdrop--open { opacity: 1; pointer-events: auto; }
@@ -867,7 +867,10 @@ h1, h2, h3, h4 {
   justify-content: center;
   gap: 5px;
   transition: background .25s, border-color .25s;
-  z-index: 100;
+  position: fixed;      
+  top: 24px;          
+  right: 24px;            
+  z-index: 9999;          
 }
 
   .mobile-menu,
