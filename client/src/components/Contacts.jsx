@@ -77,16 +77,16 @@ export default function Contacts() {
           </div>
 
           <div className="contacts__map">
-            <iframe
-              title="Карта — LinaNails"
-              src="https://yandex.ru/map-widget/v1/?ll=44.556351%2C48.724776&z=17&pt=44.556351,48.724776,pm2rdl"
-              width="100%"
-              height="100%"
-              frameBorder="0"
-              allowFullScreen
-              loading="lazy"
-              style={{ border: 0 }}
-            />
+<iframe
+  title="Карта — LinaNails"
+  src="https://yandex.ru/map-widget/v1/?ll=44.561334%2C48.518575&z=17&pt=44.561334,48.518575,pm2rdl"
+  width="100%"
+  height="100%"
+  frameBorder="0"
+  allowFullScreen
+  loading="lazy"
+  style={{ border: 0 }}
+/>
           </div>
         </div>
       </div>
