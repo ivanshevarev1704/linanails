@@ -79,7 +79,7 @@ export default function Contacts() {
           <div className="contacts__map">
 <iframe
   title="Карта — LinaNails"
-  src="https://yandex.ru/map-widget/v1/?ll=44.561334%2C48.518575&z=17&pt=44.561334,48.518575,pm2rdl"
+  src="https://yandex.ru/map-widget/v1/?ll=44.556600%2C48.723900&z=18&pt=44.556600,48.723900,pm2rdm"
   width="100%"
   height="100%"
   frameBorder="0"
