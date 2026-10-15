@@ -1388,3 +1388,58 @@ h1, h2, h3, h4 {
   .logo__avatar { width: 46px; height: 46px; font-size: 17px; }
   .header__inner { padding: 12px 16px; }
 }
+
+/* ---------- Burger: превращение в крестик ---------- */
+.burger {
+  display: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: #fff;
+  border: 1.5px solid rgba(123, 44, 191, .15);
+  cursor: pointer;
+  padding: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transition: background .25s, border-color .25s;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 100;
+}
+
+.burger span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--violet);
+  border-radius: 2px;
+  transition:
+    transform .35s cubic-bezier(.4, 0, .2, 1),
+    opacity .25s ease;
+  transform-origin: center;
+}
+
+/* 🔹 Превращение в крестик */
+.burger--open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.burger--open span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.burger--open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Показываем бургер только на мобильных */
+@media (max-width: 1000px) {
+  .nav--desktop,
+  .header__actions--desktop {
+    display: none;
+  }
+  .burger {
+    display: inline-flex;
+  }
+}
