@@ -124,7 +124,7 @@ h1, h2, h3, h4 {
 
 /* ---------- Header ---------- */
 .header {
-  position: sticky; top: 0; z-index: 50;
+  position: sticky; top: 0; z-index: 200;
   background: rgba(253, 247, 244, 0.95);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(123, 44, 191, .08);
@@ -237,7 +237,7 @@ h1, h2, h3, h4 {
   height: 46px;
   border-radius: 12px;
   background: #fff;
-  border: 1.5px solid rgba(123, 44, 191, 0.15);
+  border: 1.5px solid rgba(123, 44, 191, .15);
   cursor: pointer;
   padding: 0;
   flex-shrink: 0;
@@ -246,8 +246,12 @@ h1, h2, h3, h4 {
   justify-content: center;
   gap: 5px;
   transition: background .25s, border-color .25s;
-  z-index: 70;
+  position: fixed;        /* ← ИЗМЕНИЛИ: fixed вместо relative */
+  top: 24px;              /* ← выравнивание по шапке */
+  right: 24px;            /* ← в правый угол */
+  z-index: 100;           /* ← выше всего (панель 60, затемнение 55) */
 }
+
 .burger:hover {
   background: rgba(123, 44, 191, 0.06);
   border-color: rgba(123, 44, 191, 0.35);
@@ -829,22 +833,47 @@ h1, h2, h3, h4 {
 /* ============================================================
    Responsive
    ============================================================ */
-
 /* Мобильные — включаем бургер */
+/* Десктоп — скрываем бургер */
+@media (min-width: 1001px) {
+  .burger {
+    display: none !important;
+  }
+}
+
+/* Мобильные — включаем бургер, скрываем десктоп-меню */
 @media (max-width: 1000px) {
-  :root { --header-h: 90px; }
+  :root {
+    --header-h: 90px;
+  }
+
   .nav--desktop,
   .header__actions--desktop {
     display: none;
   }
+
   .burger {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    position: fixed;
+    top: 13px;
+    right: 24px;
+    z-index: 100;
   }
+
   .mobile-menu,
   .mobile-menu__backdrop {
     display: flex;
   }
 }
+  .mobile-menu,
+  .mobile-menu__backdrop {
+    display: flex;
+  }
+
 
 /* Планшет и мобильные — общая адаптация */
 @media (max-width: 900px) {
