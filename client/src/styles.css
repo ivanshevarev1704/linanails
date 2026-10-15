@@ -391,6 +391,8 @@ h1, h2, h3, h4 {
    ============================================================ */
 .burger {
   display: none;
+  overflow: visible;
+  z-index: 200;
   width: 44px;
   height: 44px;
   border-radius: 12px;
@@ -411,20 +413,41 @@ h1, h2, h3, h4 {
 }
 .burger span {
   display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
   width: 20px;
   height: 2px;
   background: var(--violet);
   border-radius: 2px;
-  transition: transform .35s cubic-bezier(.4, 0, .2, 1), opacity .25s;
+  transform-origin: center;
+  transition:
+    transform .35s cubic-bezier(.4, 0, .2, 1),
+    opacity .25s ease;
+  will-change: transform;
 }
+
+/* Три полоски — на разной высоте */
+.burger span:nth-child(1) {
+  transform: translate(-50%, -8px);
+}
+.burger span:nth-child(2) {
+  transform: translate(-50%, 0);
+}
+.burger span:nth-child(3) {
+  transform: translate(-50%, 8px);
+}
+
+/* 🔹 Превращение в крестик */
 .burger--open span:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
+  transform: translate(-50%, 0) rotate(45deg);
 }
 .burger--open span:nth-child(2) {
   opacity: 0;
+  transform: translate(-50%, 0) scaleX(0);
 }
 .burger--open span:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
+  transform: translate(-50%, 0) rotate(-45deg);
 }
 
 /* Мобильное меню — выезжает справа */
@@ -436,7 +459,7 @@ h1, h2, h3, h4 {
   width: min(85vw, 360px);
   height: 100vh;
   background: #fff;
-  z-index: 60;
+  z-index: 40;
   padding: 100px 28px 32px;
   box-shadow: -12px 0 40px rgba(45, 27, 46, .18);
   transform: translateX(100%);
@@ -490,7 +513,7 @@ h1, h2, h3, h4 {
   inset: 0;
   background: rgba(45, 27, 46, .5);
   backdrop-filter: blur(4px);
-  z-index: 55;
+  z-index: 30;
   opacity: 0;
   pointer-events: none;
   transition: opacity .35s ease;
