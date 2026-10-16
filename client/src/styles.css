@@ -472,7 +472,7 @@ h1, h2, h3, h4 {
   margin-bottom: 28px;
 }
 .mobile-menu__nav a {
-  padding: 16px 4px;
+  padding: 10px 4px;
   color: var(--text);
   text-decoration: none;
   font-size: 15px;
