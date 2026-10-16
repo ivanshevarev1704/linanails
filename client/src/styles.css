@@ -150,6 +150,7 @@ h1, h2, h3, h4 {
   font-weight: 900;
   font-size: 20px;
   line-height: 1;
+  letter-spacing: 0;
   box-shadow:
     inset 0 0 8px rgba(255, 255, 255, .25),
     0 2px 6px rgba(0, 0, 0, .15);
@@ -172,7 +173,7 @@ h1, h2, h3, h4 {
 .header {
   position: sticky;
   top: 0;
-  z-index: 200;
+  z-index: 50;
   background: rgba(253, 247, 244, 0.95);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(123, 44, 191, .08);
@@ -389,8 +390,8 @@ h1, h2, h3, h4 {
    ============================================================ */
 .burger {
   display: none;
-  width: 46px;
-  height: 46px;
+  width: 44px;
+  height: 44px;
   border-radius: 12px;
   background: #fff;
   border: 1.5px solid rgba(123, 44, 191, .15);
@@ -402,99 +403,178 @@ h1, h2, h3, h4 {
   justify-content: center;
   gap: 5px;
   transition: background .25s, border-color .25s;
-  z-index: 100;
 }
 .burger:hover {
   background: rgba(123, 44, 191, .06);
   border-color: rgba(123, 44, 191, .35);
 }
-
 .burger span {
   display: block;
   width: 22px;
   height: 2px;
   background: var(--violet);
   border-radius: 2px;
-  transition: transform .35s ease, opacity .25s ease;
-  transform-origin: center;
-}
-
-.burger--open span:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
-}
-.burger--open span:nth-child(2) {
-  opacity: 0;
-}
-.burger--open span:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
 }
 
 /* ============================================================
-   Mobile Menu
+   Мобильное меню
    ============================================================ */
 .mobile-menu {
   display: none;
   position: fixed;
   top: 0;
   right: 0;
-  width: min(85vw, 360px);
+  width: min(88vw, 380px);
   height: 100vh;
   background: #fff;
-  z-index: 40;
-  padding: 100px 28px 32px;
+  z-index: 60;
+  padding: 72px 28px 32px;
   box-shadow: -12px 0 40px rgba(45, 27, 46, .18);
   transform: translateX(100%);
   transition: transform .45s cubic-bezier(.22, .9, .3, 1);
   flex-direction: column;
   overflow-y: auto;
 }
+
 .mobile-menu--open {
   transform: translateX(0);
 }
+
+/* Кнопка закрытия — крестик справа вверху */
+.mobile-menu__close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text);
+  transition: background .25s, color .25s;
+}
+.mobile-menu__close:hover {
+  background: rgba(123, 44, 191, .08);
+  color: var(--violet);
+}
+
+/* Пункты меню — с разделителями */
 .mobile-menu__nav {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  margin-bottom: 32px;
+  margin-top: 24px;
+  margin-bottom: 28px;
 }
 .mobile-menu__nav a {
-  padding: 14px 16px;
-  border-radius: 14px;
+  padding: 16px 4px;
   color: var(--text);
   text-decoration: none;
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 500;
-  transition: background .25s, color .25s, transform .2s;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(123, 44, 191, .1);
+  transition: color .25s, padding-left .25s;
+}
+.mobile-menu__nav a:last-child {
+  border-bottom: none;
 }
 .mobile-menu__nav a:hover,
 .mobile-menu__nav a:active {
-  background: rgba(123, 44, 191, .08);
   color: var(--violet);
-  transform: translateX(4px);
+  padding-left: 8px;
 }
-.mobile-menu__actions {
-  margin-top: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-.mobile-menu__actions .btn {
+
+/* Кнопка "Записаться" со стрелкой */
+.mobile-menu__cta {
   width: 100%;
   padding: 16px 24px;
-  font-size: 16px;
+  font-size: 15px;
+  font-weight: 600;
+  gap: 12px;
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+.mobile-menu__cta svg {
+  transition: transform .3s ease;
+}
+.mobile-menu__cta:hover svg {
+  transform: translateX(4px);
+}
+
+/* Контакты */
+.mobile-menu__contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(123, 44, 191, .1);
+  margin-bottom: 20px;
+}
+.mobile-menu__contact {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color .25s;
+}
+.mobile-menu__contact:hover {
+  color: var(--violet);
+}
+.mobile-menu__contact svg {
+  color: var(--violet);
+  flex-shrink: 0;
+}
+
+/* Соцсети */
 .mobile-menu__socials {
   display: flex;
   gap: 12px;
+  margin-top: auto;
+  padding-top: 20px;
   justify-content: center;
 }
+.mobile-menu__socials a {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-decoration: none;
+  transition: transform .25s, box-shadow .25s;
+}
+.mobile-menu__socials a:first-child {
+  background: linear-gradient(135deg, var(--violet), var(--pink));
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: 20px;
+}
+.mobile-menu__socials a:last-child {
+  background: linear-gradient(135deg, #4C75A3, #6D8DBD);
+}
+.mobile-menu__socials a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(123, 44, 191, .35);
+}
+
+/* Затемнение */
 .mobile-menu__backdrop {
   display: none;
   position: fixed;
   inset: 0;
   background: rgba(45, 27, 46, .5);
   backdrop-filter: blur(4px);
-  z-index: 30;
+  z-index: 55;
   opacity: 0;
   pointer-events: none;
   transition: opacity .35s ease;
@@ -630,6 +710,7 @@ h1, h2, h3, h4 {
   border-color: rgba(255, 105, 180, .35);
 }
 .service-card:hover::before { transform: scaleY(1); }
+
 .service-card__title {
   font-family: 'Playfair Display', serif;
   font-size: 20px;
@@ -688,6 +769,7 @@ h1, h2, h3, h4 {
   white-space: nowrap;
 }
 .service-card:hover .service-card__link { transform: translateX(4px); }
+
 .service-card--gift .service-card__price { color: var(--pink); }
 .service-card--gift .service-card__link { color: var(--autumn); }
 .service-card--gift::before {
@@ -1155,6 +1237,7 @@ h1, h2, h3, h4 {
   font-weight: 600;
 }
 .contact-item a:hover { color: var(--violet); }
+
 .contacts__map {
   border-radius: 20px;
   overflow: hidden;
@@ -1329,14 +1412,7 @@ h1, h2, h3, h4 {
    Responsive
    ============================================================ */
 
-/* Десктоп — скрываем бургер */
-@media (min-width: 1001px) {
-  .burger {
-    display: none !important;
-  }
-}
-
-/* Мобильные — включаем бургер, скрываем десктоп-меню */
+/* Планшет и мобильные — включаем бургер */
 @media (max-width: 1000px) {
   :root { --header-h: 90px; }
 
@@ -1344,11 +1420,9 @@ h1, h2, h3, h4 {
   .header__actions--desktop {
     display: none;
   }
-
   .burger {
-    display: flex;
+    display: inline-flex;
   }
-
   .mobile-menu,
   .mobile-menu__backdrop {
     display: flex;
@@ -1375,6 +1449,7 @@ h1, h2, h3, h4 {
   .section { padding: 60px 0; }
   .logo__avatar { width: 44px; height: 44px; font-size: 17px; }
   .logo__title { font-size: 18px; }
+  .header .btn { padding: 10px 18px; font-size: 14px; }
 
   /* Контакты */
   .contacts__actions {
