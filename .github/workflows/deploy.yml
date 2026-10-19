@@ -32,9 +32,7 @@ jobs:
           cache-dependency-path: './client/package-lock.json'
 
       - name: Install dependencies
-        run: |
-          npm ci
-          npm install @rollup/rollup-linux-x64-gnu --no-save
+        run: npm install --include=optional
       - name: Build
         run: npm run build
 
