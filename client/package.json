@@ -17,6 +17,6 @@
     "vite": "^5.4.0"
   },
   "overrides": {
-    "rollup": "4.64.5"
+    "rollup": "npm:@rollup/wasm-node@^4"
   }
 }
